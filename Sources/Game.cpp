@@ -54,6 +54,10 @@ void Update()
 
     // 雲の描画
     DrawImage("cloud1.png", cloudPos);
+    cloudPos.x += 1;
+    if (cloudPos.x >= 540) {
+        cloudPos.x = -530;
+    }
 
     // 弾の描画
     if (bulletPos.x > -999) {
