@@ -16,7 +16,7 @@ Vector2 cannonPos;      //!< 砲台の位置
 Vector2 bulletPos;      //!< 弾の位置
 Rect    targetRect;     //!< ターゲットの矩形
 int     score;          //!< スコア
-
+bool    botom;
 
 // ゲーム開始時に呼ばれる関数です。
 void Start()
@@ -65,9 +65,21 @@ void Update()
     }
 
     // 砲台の描画
+    // 砲台の描画
     FillRect(Rect(cannonPos.x-10, -140, 20, 100), Color::blue);
     DrawImage("cannon.png", cannonPos);
-
+    if (botom == true) {
+        cannonPos.y += 1;
+        if (cannonPos.y > -70) {
+            botom = false;
+        }
+    }
+    if (botom == false) {
+        cannonPos.y -= 1;
+        if (cannonPos.y < -145) {
+            botom = true;
+        }
+    }
     // ターゲットの描画
     FillRect(targetRect, Color::red);
 
